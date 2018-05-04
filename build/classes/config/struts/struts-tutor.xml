@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<constant name="struts.i18n.encoding" value="UTF-8" /> 
+	<package name="tutor" namespace="/tutor" extends="dang-default">
+	
+		<!-- 跳转登录 -->
+		<action name="totutorloginAction" class="com.tarena.web.action.tutor.ToTutorLoginAction">
+			<result name="to_tutor_login">
+				/WEB-INF/jsp/tutor/tutor_login.jsp
+		</result>
+		</action>
+		<!-- 登录 -->
+
+		<action name="tutorLogin" class="com.tarena.web.action.tutor.TutorLoginAction">
+			<result name="login">/WEB-INF/jsp/tutor/tutor_login.jsp</result>
+			<result name="success">/WEB-INF/jsp/tutor/tutor_index.jsp</result>
+		</action>
+		
+		<!-- 跳转注册 -->
+		<action name="totutorRegisterAction" class="com.tarena.web.action.tutor.ToTutorRegisterAction">
+			<result name="to_tutor_register">
+				/WEB-INF/jsp/tutor/tutor_register.jsp
+		</result>
+		</action>
+		
+		<!-- 注册 -->
+		<action name="tutorRegister" class="com.tarena.web.action.tutor.TutorRegisterAction">
+			<result name="login">/WEB-INF/jsp/tutor/tutor_login.jsp</result>
+			<result name="success">/WEB-INF/jsp/tutor/tutor_reg_result.jsp</result>
+		</action>
+		
+		<!-- 返回首页 -->
+		<action name="backToIndex" class="com.tarena.web.action.tutor.TutorLoginAction" method="backIndex">
+			<result name="login">/WEB-INF/jsp/tutor/tutor_login.jsp</result>
+			<result name="success">/WEB-INF/jsp/tutor/tutor_index.jsp</result>
+		</action>
+		
+		
+		<!-- 显示家教列表 -->
+		<action name="showTutorList" class="com.tarena.web.action.tutor.TutorInfoAction" method="showTutorList">
+			<result name="success">
+				/WEB-INF/jsp/tutor/tutor_list.jsp
+		</result>
+		</action>
+		
+		<!-- 跳转更改家教信息页 -->
+		<action name="checkMyInfo" class="com.tarena.web.action.tutor.TutorInfoAction" method="checkMyInfo">
+			<result name="success">
+				/WEB-INF/jsp/tutor/tutor_info.jsp
+		</result>
+		</action>
+		
+		<!-- 跳转更改家教信息页 -->
+		<action name="updateTutorInfo" class="com.tarena.web.action.tutor.TutorInfoAction" method="updateTutorInfo">
+			<result name="success">
+				/WEB-INF/jsp/tutor/tutor_mod_result.jsp
+		</result>
+		</action>
+		
+		<!-- 跳转更改用户订单信息页 -->
+		<action name="checkMyOrder" class="com.tarena.web.action.tutor.TutorInfoAction" method="checkMyOrder">
+			<result name="success">
+				/WEB-INF/jsp/tutor/tutor_order.jsp
+		</result>
+		</action>
+		
+
+		<!-- 登出 -->
+		<action name="tutorLogout" class="com.tarena.web.action.tutor.TutorLogoutAction">
+			<result>/WEB-INF/jsp/tutor/tutor_login.jsp</result>
+		</action>
+
+	</package>
+
+</struts>

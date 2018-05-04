@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+    "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+<constant name="struts.i18n.encoding" value="UTF-8" /> 
+	<package name="admin" namespace="/admin" extends="dang-default">
+	
+		<!-- 跳转登录 -->
+		<action name="toadminloginAction" class="com.tarena.web.action.admin.ToAdminLoginAction">
+			<result name="to_admin_login">
+				/WEB-INF/jsp/admin/admin_login.jsp
+		</result>
+		</action>
+		<!-- 登录 -->
+
+		<action name="adminlogin" class="com.tarena.web.action.admin.AdminLoginAction">
+			<result name="login">/WEB-INF/jsp/admin/admin_login.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/index.jsp</result>
+		</action>
+		
+		<!-- 返回首页 -->
+		<action name="backToIndex" class="com.tarena.web.action.admin.AdminLoginAction" method="backIndex">
+			<result name="login">/WEB-INF/jsp/admin/admin_login.jsp</result>
+			<result name="success">/WEB-INF/jsp/admin/index.jsp</result>
+		</action>
+		
+		<!-- 显示用户列表 -->
+		<action name="showUserList" class="com.tarena.web.action.admin.UserManageAction" method="showUserList">
+			<result name="success">
+				/WEB-INF/jsp/admin/user_list.jsp
+		</result>
+		</action>
+		
+		<!-- 跳转更改用户信息页 -->
+		<action name="modifyUserInfo" class="com.tarena.web.action.admin.UserManageAction" method="modUserInfo">
+			<result name="success">
+				/WEB-INF/jsp/admin/user_modify.jsp
+		</result>
+		</action>
+		
+		<!-- 跳转更改用户信息页 -->
+		<action name="updateUserInfo" class="com.tarena.web.action.admin.UserManageAction" method="updateUserInfo">
+			<result name="success">
+				/WEB-INF/jsp/admin/manage_result.jsp
+		</result>
+		</action>
+		
+		<!-- 删除指定用户 -->
+		<action name="delUser" class="com.tarena.web.action.admin.UserManageAction" method="delUser">
+			<result name="success">
+				/WEB-INF/jsp/admin/manage_result.jsp
+		</result>
+		</action>
+		
+		
+		<!-- 显示家教列表 -->
+		<action name="showTutorList" class="com.tarena.web.action.admin.TutorManageAction" method="showTutorList">
+			<result name="success">
+				/WEB-INF/jsp/admin/tutor_list.jsp
+		</result>
+		</action>
+		
+		<!-- 显示订单列表 -->
+		<action name="showOrderList" class="com.tarena.web.action.admin.OrderManageAction">
+			<result name="success">
+				/WEB-INF/jsp/admin/order_list.jsp
+		</result>
+		</action>
+		
+		<!-- 跳转更改家教信息页 -->
+		<action name="modifyTutorInfo" class="com.tarena.web.action.admin.TutorManageAction" method="modTutorInfo">
+			<result name="success">
+				/WEB-INF/jsp/admin/tutor_modify.jsp
+		</result>
+		</action>
+		
+		<!-- 跳转更改家教信息页 -->
+		<action name="updateTutorInfo" class="com.tarena.web.action.admin.TutorManageAction" method="updateTutorInfo">
+			<result name="success">
+				/WEB-INF/jsp/admin/manage_result.jsp
+		</result>
+		</action>
+		
+		<!-- 删除指定家教 -->
+		<action name="delTutor" class="com.tarena.web.action.admin.TutorManageAction" method="delTutor">
+			<result name="success">
+				/WEB-INF/jsp/admin/manage_result.jsp
+		</result>
+		</action>
+		
+		
+		<!-- 邮箱验证 -->
+		<action name="verify" class="com.tarena.web.action.user.VerifyAction">
+			<interceptor-ref name="tokenStack"></interceptor-ref>
+			<result name="verify">/WEB-INF/jsp/user/verify_form.jsp</result>
+			<result name="success">/WEB-INF/jsp/user/register_ok.jsp</result>
+		</action>
+
+		<!-- 登出 -->
+		<action name="adminlogout" class="com.tarena.web.action.admin.AdminLogoutAction">
+			<result>/WEB-INF/jsp/admin/admin_login.jsp</result>
+		</action>
+
+		<!-- 图形验证码 -->
+		<action name="checkCode" class="com.tarena.web.action.user.CheckCodeAction">
+			<result name="success" type="stream">
+				<param name="inputName">imageStream</param>
+			</result>
+		</action>
+	</package>
+
+</struts>
